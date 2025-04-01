@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 angularapp/.angular/cache/
 /angularapp/.angular/cache/
+/webapi/appsettings.json
