@@ -1,0 +1,23 @@
+<header>
+  <mat-toolbar color="primary">
+    <a type="button" mat-icon-button [routerLink]="['/']">
+      <mat-icon>home</mat-icon>
+    </a>
+    <a mat-flat-button color="primary" [routerLink]="['/']">
+      <mat-icon>list</mat-icon> Short Urls
+    </a>
+    <a *ngIf="isLoggedIn" mat-flat-button color="primary" [href]="'/about'">
+      <mat-icon>info</mat-icon> About
+    </a>
+    <span class="spacer"></span>
+    <a *ngIf="!isLoggedIn" mat-flat-button color="primary" [routerLink]="['/login']">
+      <mat-icon>login</mat-icon> Login
+    </a>
+    <a *ngIf="!isLoggedIn" mat-flat-button color="primary" [routerLink]="['/register']">
+      <mat-icon>login</mat-icon> Register
+    </a>
+    <a *ngIf="isLoggedIn" mat-flat-button color="primary" (click)="onLogout()">
+      <mat-icon>logout</mat-icon>
+    </a>
+  </mat-toolbar>
+</header>

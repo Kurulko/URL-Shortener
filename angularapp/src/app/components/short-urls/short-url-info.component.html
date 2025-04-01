@@ -1,0 +1,39 @@
+<button type="button" mat-flat-button color="secondary" [routerLink]="['/']">
+    <mat-icon>reply</mat-icon> Back
+</button>
+<br/><br/>
+<mat-card class="card">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>{{ shortUrl.shortCode }}</mat-card-title>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+        <br>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Original Url:</th>
+                    <td>{{ shortUrl.originalUrl }}</td>
+                </tr> 
+                <tr>
+                    <th>Short Code:</th>
+                    <td>
+                        <a [href]="getFullShortUrlPathByShortCode(shortUrl.shortCode)">{{ shortUrl.shortCode }}</a>
+                        <button type="button" (click)="copyFullShortUrlPath(shortUrl.shortCode)" mat-icon-button>
+                            <mat-icon>content_copy</mat-icon>
+                        </button>
+                    </td>
+                </tr>   
+                <tr>
+                    <th>Count of Clicks:</th>
+                    <td>{{ shortUrl.clickCount }}</td>
+                </tr>  
+                <tr>
+                    <th>Created At:</th>
+                    <td>{{ shortUrl.createdDate | date:'d MMMM yyyy' }}</td>
+                </tr>        
+            </tbody>
+        </table>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,8 @@
+﻿@{
+    ViewData["Title"] = "About the URL Shortener's algorithm";
+}
+<h2>@ViewData["Title"]</h2>
+
+<a href="/">Home</a>
+<br />
+<p>The algorithm is quite simple, it generates a short, unique code by creating an 8-character substring from a random GUID. It then checks if this code already exists in the database. If a collision is detected, it goes on generating new short codes until a unique one is found.</p>

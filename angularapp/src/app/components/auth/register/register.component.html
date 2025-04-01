@@ -1,0 +1,39 @@
+<mat-error *ngIf="authResult && !authResult.success">
+    <h4>{{ authResult.message }}</h4>
+</mat-error>
+<br>
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required placeholder="Insert Name" [minlength]="3">
+        <mat-error *ngIf="registerForm.controls['name'].invalid && registerForm.controls['name'].touched">
+            Invalid Name
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password" required placeholder="Insert Password" [minlength]="8">
+        <mat-error *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched">
+            Invalid Password
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Confirm Password</mat-label>
+        <input matInput formControlName="passwordConfirm" type="password" required placeholder="Confirm Password" [minlength]="8">
+        <mat-error *ngIf="registerForm.controls['passwordConfirm'].invalid && registerForm.controls['passwordConfirm'].touched">
+          Invalid Password Confirmation
+        </mat-error>
+    </mat-form-field>
+    <mat-error *ngIf="registerForm.errors?.['notMatching'] && registerForm.get('passwordConfirm')?.touched && registerForm.get('passwordConfirm')?.dirty && registerForm.get('password')?.touched">
+        Passwords do not match.
+    </mat-error>
+    <br />
+    <br /><br />
+    <div>
+        <button type="submit" color="primary" mat-flat-button [disabled]="registerForm.invalid">
+            <mat-icon>send</mat-icon> Register
+        </button>
+    </div>
+</form>

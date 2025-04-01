@@ -1,0 +1,25 @@
+<mat-error *ngIf="authResult && !authResult.success">
+    <h4>{{ authResult.message }}</h4>
+</mat-error>
+<br>
+<mat-form-field>
+    <mat-label>Name</mat-label>
+    <input [(ngModel)]="loginModel.name" matInput required placeholder="Insert Name" [minlength]="3" #nameInput="ngModel">
+    <mat-error *ngIf="nameInput.invalid && nameInput.touched">
+        Invalid Name
+    </mat-error>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Password</mat-label>
+    <input [(ngModel)]="loginModel.password" matInput required type="password" placeholder="Insert Password" [minlength]="8" #passwordInput="ngModel">
+    <mat-error *ngIf="passwordInput.invalid && passwordInput.touched">
+        Invalid Password
+    </mat-error>
+</mat-form-field>
+<br /><br />
+<div>
+    <button type="submit" color="primary" mat-flat-button (click)="login()"  [disabled]="nameInput.invalid || passwordInput.invalid">
+        <mat-icon>send</mat-icon> Login
+    </button>
+</div>
